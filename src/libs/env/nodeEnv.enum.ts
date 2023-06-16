@@ -1,6 +1,6 @@
 export enum NodeEnvEnum {
-    Dev = 'dev',
-    Test = 'test',
-    Stage = 'stage',
-    Main = 'main',
+  Dev = 'dev',
+  Test = 'test',
+  Stage = 'stage',
+  Main = 'main',
 }

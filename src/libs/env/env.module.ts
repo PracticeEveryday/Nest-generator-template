@@ -1,10 +1,10 @@
-import {DynamicModule, Module} from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
 import { EnvService } from './env.service';
-import {ConfigModule} from "@nestjs/config";
-import {NodeEnvEnum} from "./nodeEnv.enum";
+import { ConfigModule } from '@nestjs/config';
+import { NodeEnvEnum } from './nodeEnv.enum';
 
 const envAnonymousFunc = (() => {
-  const BASE_URL = 'config/.env'
+  const BASE_URL = 'config/.env';
   const envFiles: string[] = [];
   switch (process.env.NODE_ENV) {
     case NodeEnvEnum.Main:
@@ -23,7 +23,7 @@ const envAnonymousFunc = (() => {
       envFiles.push(`${BASE_URL}`);
   }
   return envFiles;
-})()
+})();
 
 @Module({
   imports: [

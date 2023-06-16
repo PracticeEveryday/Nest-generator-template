@@ -21,8 +21,8 @@ let AppController = class AppController {
         return this.appService.getHello();
     }
     getError() {
-        const error = new Error("err");
-        throw new base_exception_1.BaseException({ title: "test", message: "test", raw: error, statusCode: 400 });
+        const error = new Error('err');
+        throw new base_exception_1.BaseException({ title: 'test', message: 'test', raw: error, statusCode: 400 });
     }
 };
 __decorate([
@@ -32,7 +32,7 @@ __decorate([
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
 __decorate([
-    (0, common_1.Get)("/error"),
+    (0, common_1.Get)('/error'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)

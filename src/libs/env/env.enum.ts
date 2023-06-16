@@ -1,8 +1,8 @@
 export enum EnvEnum {
-    // port
-    PORT,
+  // port
+  PORT,
 
-    // swagger
-    SWAGGER_USER,
-    SWAGGER_PASSWORD
+  // swagger
+  SWAGGER_USER,
+  SWAGGER_PASSWORD,
 }
