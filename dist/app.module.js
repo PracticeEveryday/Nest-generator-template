@@ -12,13 +12,19 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const generator_module_1 = require("./apps/generator/generator.module");
 const env_module_1 = require("./libs/env/env.module");
+const core_1 = require("@nestjs/core");
+const httpException_filter_1 = require("./apps/common/exception/filter/httpException.filter");
+const filter = {
+    provide: core_1.APP_FILTER,
+    useClass: httpException_filter_1.CustomExceptionFilter,
+};
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [generator_module_1.GeneratorModule, env_module_1.EnvModule.forRoot()],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [app_service_1.AppService, filter],
     })
 ], AppModule);
 exports.AppModule = AppModule;

@@ -2,7 +2,7 @@ import { HttpException } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude, Expose } from 'class-transformer';
 
-type ExecptionType = 'statusCode' | 'title' | 'message' | 'raw'
+type BaseExceptionPropertyType = 'statusCode' | 'title' | 'message' | 'raw'
 
 export class BaseException extends HttpException {
     @Exclude() private readonly _statusCode: number;
@@ -10,7 +10,7 @@ export class BaseException extends HttpException {
     @Exclude() private readonly _title: string;
     @Exclude() raw: Error;
 
-    constructor(properties: Pick<BaseException, ExecptionType>) {
+    constructor(properties: Pick<BaseException, BaseExceptionPropertyType>) {
         super(properties.message, properties.statusCode);
         this._title = properties.title;
         this._statusCode = properties.statusCode;
@@ -18,7 +18,7 @@ export class BaseException extends HttpException {
         this.raw = properties.raw;
     }
 
-    getResponse() {
+    public getResponse() {
         return {
             statusCode: this.statusCode,
             success: false,

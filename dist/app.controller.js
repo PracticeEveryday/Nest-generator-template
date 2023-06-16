@@ -12,12 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
+const base_exception_1 = require("./apps/common/exception/CustomExceptions/base.exception");
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
     getHello() {
         return this.appService.getHello();
+    }
+    getError() {
+        const error = new Error("err");
+        throw new base_exception_1.BaseException({ title: "test", message: "test", raw: error, statusCode: 400 });
     }
 };
 __decorate([
@@ -26,6 +31,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
+__decorate([
+    (0, common_1.Get)("/error"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AppController.prototype, "getError", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])

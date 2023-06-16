@@ -1,11 +1,11 @@
 import { HttpException } from '@nestjs/common';
-type ExecptionPropertyType = 'statusCode' | 'title' | 'message' | 'raw';
+type BaseExceptionPropertyType = 'statusCode' | 'title' | 'message' | 'raw';
 export declare class BaseException extends HttpException {
     private readonly _statusCode;
     private readonly _success;
     private readonly _title;
     raw: Error;
-    constructor(properties: Pick<BaseException, ExecptionPropertyType>);
+    constructor(properties: Pick<BaseException, BaseExceptionPropertyType>);
     getResponse(): {
         statusCode: number;
         success: boolean;
